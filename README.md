@@ -1,16 +1,35 @@
-# React + Vite
+# ✦ Chetan Web Studio
 
-This template provides a minimal setup to get React working in Vite with HMR and some Oxlint rules.
+[![Live Site](https://img.shields.io/badge/Live_Site-chetanwebstudio.com-black?style=for-the-badge)](https://chetanwebstudio.com)
 
-Currently, two official plugins are available:
+> **Crafting high-performance digital experiences.**
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Oxc](https://oxc.rs)
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/)
+Welcome to the digital headquarters of **Chetan Web Studio**. We are a premium, full-stack engineering agency specializing in high-fidelity user interfaces, tactile brutalism, and robust, scalable architectures. Our expertise spans modern JavaScript ecosystems, allowing us to deliver pixel-perfect, performant, and deeply interactive web applications.
 
-## React Compiler
+## ❖ Engineering & Design Philosophy
+Our approach bridges the gap between immaculate design and unyielding engineering. We build systems that are as beautiful under the hood as they are on the screen.
+- **Full-Stack Engineering**: End-to-end architecture tailored for scale and speed.
+- **Modern Frameworks**: Mastery in React and Next.js ecosystems.
+- **Tactile Brutalism**: Distinctive, structural aesthetic combined with intuitive user experience.
 
-The React Compiler is not enabled on this template because of its impact on dev & build performances. To add it, see [this documentation](https://react.dev/learn/react-compiler/installation).
+## ❖ Tech Stack
+This repository is built upon a high-performance foundation:
+- **Core**: React 
+- **Build Tool**: Vite
+- **Styling**: TailwindCSS
 
-## Expanding the Oxlint configuration
+## ❖ Getting Started
 
-If you are developing a production application, we recommend using TypeScript with type-aware lint rules enabled. Check out the [TS template](https://github.com/vitejs/vite/tree/main/packages/create-vite/template-react-ts) for information on how to integrate TypeScript and Oxlint's TypeScript related rules in your project.
+To run this project locally:
+
+```bash
+# Install dependencies
+npm install
+
+# Start the development server
+npm run dev
+```
+
+## ❖ Contact
+
+Explore our work and get in touch at [chetanwebstudio.com](https://chetanwebstudio.com).
