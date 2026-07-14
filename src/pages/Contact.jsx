@@ -91,10 +91,10 @@ const Contact = () => {
                   className="p-4 bg-background border border-border focus:border-text-main focus:outline-none transition-colors font-medium rounded-none w-full appearance-none cursor-pointer"
                 >
                   <option value="" disabled>Select a budget range</option>
+                  <option value="<2.5k">&lt; $2,500</option>
+                  <option value="2.5k-5k">$2,500 - $5,000</option>
                   <option value="5k-10k">$5,000 - $10,000</option>
-                  <option value="10k-25k">$10,000 - $25,000</option>
-                  <option value="25k-50k">$25,000 - $50,000</option>
-                  <option value="50k+">$50,000+</option>
+                  <option value="10k+">$10,000+</option>
                 </select>
               </div>
 
