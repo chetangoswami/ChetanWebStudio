@@ -86,3 +86,15 @@ h1, h2, h3, h4, h5, h6, .font-heading {
 .dark .brutalist-button {
   box-shadow: 4px 4px 0px var(--color-accent);
 }
+
+/* Background title in Case Study hero section */
+.title-bg {
+  color: var(--color-text-main);
+  opacity: 0.35;
+  mix-blend-mode: multiply;
+}
+
+.dark .title-bg {
+  opacity: 0.4;
+  mix-blend-mode: screen;
+}

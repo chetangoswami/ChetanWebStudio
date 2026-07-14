@@ -19,10 +19,11 @@ const Home = () => {
     {
       title: 'Your India Holidays',
       description: 'Immersive Travel Booking Experience',
-      image: '/india_holidays.png',
+      image: '/yourindiaholidays-hero.png',
       tags: ['React', 'Firebase', 'TailwindCSS'],
-      link: 'https://yourindiaholidays.com',
-      buttonText: 'View Live Site'
+      link: '/work/yourindiaholidays',
+      buttonText: 'Read Case Study',
+      internal: true
     },
     {
       title: 'iKoho',

@@ -1,21 +1,18 @@
-import React, { useEffect, useState } from 'react';
+import React from 'react';
 import { useParams, Link } from 'react-router-dom';
 import { motion } from 'framer-motion';
 import { ikohoCaseStudy } from '../data/ikoho';
+import { yourindiaholidaysCaseStudy } from '../data/yourindiaholidays';
 
 const CaseStudy = () => {
   const { slug } = useParams();
-  const [data, setData] = useState(null);
-
-  useEffect(() => {
-    // In a real app, you'd fetch based on the slug.
-    // For now, we only have ikoho.
-    if (slug === 'ikoho') {
-      setData(ikohoCaseStudy);
-    } else {
-      setData(null);
-    }
-  }, [slug]);
+  
+  let data = null;
+  if (slug === 'ikoho') {
+    data = ikohoCaseStudy;
+  } else if (slug === 'yourindiaholidays') {
+    data = yourindiaholidaysCaseStudy;
+  }
 
   if (!data) {
     return (
@@ -41,7 +38,7 @@ const CaseStudy = () => {
           <Link to="/" className="group inline-flex items-center gap-2 mb-12 text-sm font-bold uppercase tracking-widest text-zinc-500 hover:text-zinc-950 transition-colors">
             <span className="group-hover:-translate-x-1 transition-transform">←</span> Back to Work
           </Link>
-          <h1 className="text-6xl md:text-9xl font-black uppercase tracking-tighter leading-[0.85] mb-12 mix-blend-difference text-zinc-950">
+          <h1 className="text-6xl md:text-9xl font-black uppercase tracking-tighter leading-[0.85] mb-12 text-zinc-950">
             {data.title}
           </h1>
           <div className="grid grid-cols-2 md:grid-cols-4 gap-8 text-sm md:text-base border-y-4 border-zinc-950 py-8">
@@ -85,6 +82,11 @@ const CaseStudy = () => {
           transition={{ delay: 0.2, duration: 1, ease: customEase }} 
           className="mb-32 relative group"
         >
+          {/* Massive Background Text - Darkened as per feedback */}
+          <div className="title-bg absolute -top-16 left-0 text-[12rem] md:text-[18rem] font-black uppercase pointer-events-none select-none z-[-1] tracking-tighter leading-none">
+            {data.client}
+          </div>
+          
           <div className="absolute inset-0 bg-zinc-950 translate-x-4 translate-y-4 group-hover:translate-x-6 group-hover:translate-y-6 transition-transform duration-500 ease-out"></div>
           <div className="relative border-4 border-zinc-950 overflow-hidden bg-zinc-100">
             <img src={data.heroImage} alt={`${data.client} Hero`} className="w-full h-auto object-cover grayscale hover:grayscale-0 transition-all duration-700 ease-out scale-100 group-hover:scale-105" />
