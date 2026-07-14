@@ -45,7 +45,7 @@ const Home = () => {
   return (
     <>
       {/* Hero Section */}
-      <section className="relative pt-40 md:pt-48 pb-20 md:pb-24 px-4 md:px-6 flex flex-col items-center justify-center min-h-[85vh] md:min-h-[90vh]">
+      <section className="relative pt-40 md:pt-48 pb-20 md:pb-24 px-4 md:px-6 flex flex-col items-center justify-center min-h-[85vh] md:min-h-[90vh] max-h-[900px]">
         {/* Brutalist Background Pattern - precise dots */}
         <div className="absolute inset-0 pointer-events-none opacity-[0.04] dark:opacity-[0.06]" style={{ backgroundImage: 'radial-gradient(var(--color-text-main) 1px, transparent 1px)', backgroundSize: '40px 40px' }} />
         
