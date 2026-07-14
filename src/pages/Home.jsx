@@ -27,10 +27,11 @@ const Home = () => {
     {
       title: 'iKoho',
       description: 'Premium E-Commerce Store',
-      image: '/ikoho.png',
+      image: '/ikoho-hero.png',
       tags: ['Shopify', 'Liquid', 'Tailwind'],
-      link: 'https://ikoho.in',
-      buttonText: 'View Live Site'
+      link: '/work/ikoho',
+      buttonText: 'Read Case Study',
+      internal: true
     },
     {
       title: 'Luxe Dentaire',
@@ -83,8 +84,7 @@ const Home = () => {
       {/* Portfolio Section */}
       <section id="work" className="py-24 md:py-32 px-4 md:px-6 border-t border-border bg-secondary relative z-10">
         <div className="max-w-7xl mx-auto">
-          <motion.div 
-            initial="hidden" whileInView="visible" viewport={{ once: true, margin: "-100px" }} variants={fadeUpVariant}
+          <div 
             className="mb-16 md:mb-24 flex flex-col md:flex-row items-start md:items-end justify-between gap-4"
           >
             <h2 className="text-5xl sm:text-6xl md:text-8xl font-black tracking-tighter uppercase font-heading">
@@ -93,21 +93,43 @@ const Home = () => {
             <div className="text-text-muted font-medium tracking-widest uppercase text-sm md:mb-4">
               [ 2024 - 2026 ]
             </div>
-          </motion.div>
+          </div>
 
           <div className="flex flex-col gap-24 md:gap-32">
             {projects.map((project, index) => (
-              <motion.div 
+              <div 
                 key={index}
-                initial={{ opacity: 0, y: 100 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                viewport={{ once: true, margin: "-100px" }}
-                transition={{ duration: 0.8, ease: customEase }}
                 className="group flex flex-col md:flex-row gap-8 md:gap-12 items-center"
               >
                 <div className={`w-full md:w-3/5 ${index % 2 === 1 ? 'md:order-2' : ''}`}>
                   <div className={`brutalist-card p-2 md:p-3 aspect-[4/3] md:aspect-[16/10] relative ${project.link ? 'cursor-pointer' : ''}`}>
-                    {project.link ? (
+                    {project.internal ? (
+                      <Link to={project.link} className="block w-full h-full">
+                        <motion.div 
+                          className="w-full h-full border border-border relative overflow-hidden bg-primary"
+                          whileHover={{ scale: 0.98 }}
+                          transition={{ duration: 0.5, ease: customEase }}
+                        >
+                          <img 
+                            src={project.image} 
+                            alt={project.title} 
+                            className="w-full h-full object-cover object-top transition-transform duration-1000 group-hover:scale-105"
+                          />
+                          
+                          <div className="absolute inset-0 bg-primary/0 md:group-hover:bg-primary/20 backdrop-blur-0 md:group-hover:backdrop-blur-md transition-all duration-500 z-10 flex items-center justify-center opacity-0 md:group-hover:opacity-100">
+                            <span className="hidden md:inline-block px-6 py-3 border border-border bg-glass backdrop-blur-lg text-text-main font-bold uppercase tracking-widest text-sm shadow-[4px_4px_0px_var(--color-border)] transform translate-y-4 group-hover:translate-y-0 transition-all duration-500">
+                              {project.buttonText}
+                            </span>
+                          </div>
+                          
+                          <div className="md:hidden absolute bottom-4 right-4 z-20">
+                            <span className="px-4 py-2 border border-border bg-glass backdrop-blur-xl text-text-main font-bold uppercase tracking-widest text-xs shadow-[2px_2px_0px_var(--color-border)] flex items-center gap-2">
+                              View <span className="text-accent">&rarr;</span>
+                            </span>
+                          </div>
+                        </motion.div>
+                      </Link>
+                    ) : project.link ? (
                       <a href={project.link} target="_blank" rel="noopener noreferrer" className="block w-full h-full">
                         <motion.div 
                           className="w-full h-full border border-border relative overflow-hidden bg-primary"
@@ -174,7 +196,7 @@ const Home = () => {
                     ))}
                   </div>
                 </div>
-              </motion.div>
+              </div>
             ))}
           </div>
         </div>

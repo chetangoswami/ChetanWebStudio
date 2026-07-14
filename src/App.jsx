@@ -7,6 +7,8 @@ import Help from './pages/Help';
 import About from './pages/About';
 import LegalPrivacy from './pages/LegalPrivacy';
 import TermsOfService from './pages/TermsOfService';
+import CaseStudy from './pages/CaseStudy';
+import NotFound from './pages/NotFound';
 import Footer from './components/Footer';
 import ScrollToTop from './components/ScrollToTop';
 
@@ -45,7 +47,7 @@ const App = () => {
   };
 
   return (
-    <div className="flex flex-col min-h-screen bg-primary text-text-main font-sans selection:bg-accent selection:text-white transition-colors duration-500 overflow-x-hidden">
+    <div className="flex flex-col min-h-screen bg-primary text-text-main font-sans selection:bg-accent selection:text-white transition-colors duration-500">
       <ScrollToTop />
       {/* Navigation */}
       <nav className="fixed w-full top-0 z-50 bg-primary/70 backdrop-blur-xl border-b border-border transition-colors duration-500">
@@ -107,6 +109,8 @@ const App = () => {
           <Route path="/about" element={<About />} />
           <Route path="/legal-privacy" element={<LegalPrivacy />} />
           <Route path="/terms-of-service" element={<TermsOfService />} />
+          <Route path="/work/:slug" element={<CaseStudy />} />
+          <Route path="*" element={<NotFound />} />
         </Routes>
       </main>
 
