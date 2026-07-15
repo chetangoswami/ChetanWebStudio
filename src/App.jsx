@@ -13,6 +13,7 @@ import Studio from './pages/Studio';
 import Contact from './pages/Contact';
 import LegalPrivacy from './pages/legal/LegalPrivacy';
 import TermsOfService from './pages/legal/TermsOfService';
+import NotFound from './pages/NotFound';
 
 const App = () => {
   const [mounted, setMounted] = useState(false);
@@ -50,6 +51,7 @@ const App = () => {
             <Route path="/contact" element={<Contact />} />
             <Route path="/privacy-policy" element={<LegalPrivacy />} />
             <Route path="/terms-of-service" element={<TermsOfService />} />
+            <Route path="*" element={<NotFound />} />
           </Routes>
         </main>
 

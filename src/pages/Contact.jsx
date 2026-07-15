@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { motion } from 'framer-motion';
 import HCaptcha from '@hcaptcha/react-hcaptcha';
 
@@ -10,6 +10,15 @@ const Contact = () => {
     budget: '',
     projectDetails: ''
   });
+
+  useEffect(() => {
+    document.title = 'Start a Project | Chetan Web Studio';
+    const metaDesc = document.querySelector('meta[name="description"]');
+    if (metaDesc) {
+      metaDesc.setAttribute('content', 'Ready to build something extraordinary? Contact Chetan Web Studio to start your ultra-premium web design project. Based in New Delhi, serving global elite brands.');
+    }
+  }, []);
+
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [isSuccess, setIsSuccess] = useState(false);
   const [captchaToken, setCaptchaToken] = useState(null);

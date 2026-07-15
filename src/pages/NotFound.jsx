@@ -4,7 +4,7 @@ import { Link } from 'react-router-dom';
 
 const NotFound = () => {
   useEffect(() => {
-    document.title = "404 | Chetan Studio";
+    document.title = "404 — Page Not Found | Chetan Web Studio";
   }, []);
 
   const customEase = [0.22, 1, 0.36, 1];

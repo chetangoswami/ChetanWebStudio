@@ -1,9 +1,17 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import { motion } from 'framer-motion';
 import ikohoImg from '../assets/ikoho.png';
 import yourIndiaHolidaysImg from '../assets/yourindiaholidays.png';
 
 const Work = () => {
+  useEffect(() => {
+    document.title = 'Our Work | Chetan Web Studio';
+    const metaDesc = document.querySelector('meta[name="description"]');
+    if (metaDesc) {
+      metaDesc.setAttribute('content', 'Browse the portfolio of Chetan Web Studio — ultra-premium React websites and digital storefronts engineered for elite brands worldwide.');
+    }
+  }, []);
+
   const fadeUp = {
     hidden: { opacity: 0, y: 30 },
     visible: { opacity: 1, y: 0, transition: { duration: 0.6, ease: "easeOut" } }

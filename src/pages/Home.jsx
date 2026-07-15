@@ -188,6 +188,14 @@ const Home = () => {
   const textX2 = useTransform(scrollYProgress, [0, 1], ["-50%", "0%"]);
 
   useEffect(() => {
+    document.title = 'Chetan Web Studio | Ultra-Premium Web Design Agency India';
+    const metaDesc = document.querySelector('meta[name="description"]');
+    if (metaDesc) {
+      metaDesc.setAttribute('content', 'Chetan Web Studio engineers $10,000+ ultra-premium React websites for elite brands. Based in New Delhi, India. Serving global clientele.');
+    }
+  }, []);
+
+  useEffect(() => {
     // Defensive DOM guard
     if (!containerRef.current) return;
     containerRef.current.setAttribute('data-theme', 'avant-garde-light');

@@ -1,9 +1,17 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import { motion } from 'framer-motion';
 
 const viewportOpts = { once: true, margin: '-80px' };
 
 const About = () => {
+  useEffect(() => {
+    document.title = 'About | Chetan Web Studio — Elite Boutique Agency';
+    const metaDesc = document.querySelector('meta[name="description"]');
+    if (metaDesc) {
+      metaDesc.setAttribute('content', 'Founded by Chetan Goswami in New Delhi, Chetan Web Studio is an elite boutique web design agency. We build bespoke $10,000+ React websites for premium global brands.');
+    }
+  }, []);
+
   return (
     <div className="pt-32 pb-24 px-4 md:px-8 lg:px-12 min-h-screen relative overflow-hidden bg-background">
       {/* Background grid */}

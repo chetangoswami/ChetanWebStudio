@@ -1,7 +1,15 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import { motion } from 'framer-motion';
 
 const Studio = () => {
+  useEffect(() => {
+    document.title = 'The Studio | Chetan Web Studio';
+    const metaDesc = document.querySelector('meta[name="description"]');
+    if (metaDesc) {
+      metaDesc.setAttribute('content', 'Inside Chetan Web Studio — our process, philosophy, and engineering approach to building ultra-premium digital experiences for elite brands.');
+    }
+  }, []);
+
   const fadeUp = {
     hidden: { opacity: 0, y: 30 },
     visible: { opacity: 1, y: 0, transition: { duration: 0.6, ease: "easeOut" } }

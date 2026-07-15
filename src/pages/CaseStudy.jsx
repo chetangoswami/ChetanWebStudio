@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import { useParams, Link } from 'react-router-dom';
 import { motion } from 'framer-motion';
 import { ikohoCaseStudy } from '../data/ikoho';
@@ -13,6 +13,18 @@ const CaseStudy = () => {
   } else if (slug === 'yourindiaholidays') {
     data = yourindiaholidaysCaseStudy;
   }
+
+  useEffect(() => {
+    if (data) {
+      document.title = `${data.client} Case Study | Chetan Web Studio`;
+      const metaDesc = document.querySelector('meta[name="description"]');
+      if (metaDesc) {
+        metaDesc.setAttribute('content', `Explore the ${data.client} case study by Chetan Web Studio — a deep dive into the challenge, solution, and measurable impact of ultra-premium web engineering.`);
+      }
+    } else {
+      document.title = 'Case Study Not Found | Chetan Web Studio';
+    }
+  }, [data]);
 
   if (!data) {
     return (
