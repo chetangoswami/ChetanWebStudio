@@ -26,7 +26,7 @@ const Header = ({ isDarkMode, toggleDarkMode }) => {
             initial="hidden" animate="visible" variants={fadeUpVariant}
             className="text-lg md:text-xl font-bold tracking-tight font-heading"
           >
-            <Link to="/">Chetan Web Studio</Link>
+            <Link to="/" aria-label="Chetan Web Studio Home">Chetan Web Studio</Link>
           </motion.div>
           
           <motion.div 
