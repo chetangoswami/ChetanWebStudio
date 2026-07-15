@@ -106,8 +106,10 @@ const WorkItem = ({ title, category, description, link, imageSrc, align }) => {
     offset: ["start end", "end start"]
   });
 
+  // FIX 2 — Disable image parallax on mobile to prevent scroll jank
+  const isMobileItem = typeof window !== 'undefined' && window.innerWidth < 768;
   // We use robust whileInView for fading to guarantee visibility, leaving scrollYProgress purely for the image parallax.
-  const imageY = useTransform(scrollYProgress, [0, 1], ["-15%", "15%"]);
+  const imageY = useTransform(scrollYProgress, [0, 1], isMobileItem ? ['0%', '0%'] : ["-15%", "15%"]);
 
   // Defensive DOM guard check for good measure
   useEffect(() => {
@@ -154,6 +156,8 @@ const WorkItem = ({ title, category, description, link, imageSrc, align }) => {
 };
 
 const Home = () => {
+  // FIX 1 & 3 — Detect mobile once for WebGL + floating shapes
+  const isMobile = typeof window !== 'undefined' && window.innerWidth < 768;
   const containerRef = useRef(null);
   const heroRef = useRef(null);
   
@@ -192,15 +196,19 @@ const Home = () => {
   return (
     <div ref={containerRef} className="w-full bg-white dark:bg-[#000000] text-slate-900 dark:text-white overflow-hidden relative min-h-[300vh] transition-colors duration-500">
       
-      {/* Floating Abstract Shapes */}
-      <motion.div 
-        className="fixed top-[10%] left-[5%] w-72 h-72 rounded-full -z-10 opacity-70 pointer-events-none will-change-transform"
-        style={{ y: yShape1, rotate: rotateShape, scale: scaleShape, backgroundImage: 'radial-gradient(circle, rgba(226, 232, 240, 0.8) 0%, rgba(255, 255, 255, 0) 70%)' }}
-      />
-      <motion.div 
-        className="fixed top-[60%] right-[5%] w-96 h-96 rounded-full -z-10 opacity-60 pointer-events-none will-change-transform"
-        style={{ y: yShape2, rotate: rotateShape, backgroundImage: 'radial-gradient(circle, rgba(226, 232, 240, 0.8) 0%, rgba(255, 255, 255, 0) 70%)' }}
-      />
+      {/* Floating Abstract Shapes — FIX 3: hidden on mobile to reduce paint layers */}
+      {!isMobile && (
+        <>
+          <motion.div 
+            className="fixed top-[10%] left-[5%] w-72 h-72 rounded-full -z-10 opacity-70 pointer-events-none will-change-transform"
+            style={{ y: yShape1, rotate: rotateShape, scale: scaleShape, backgroundImage: 'radial-gradient(circle, rgba(226, 232, 240, 0.8) 0%, rgba(255, 255, 255, 0) 70%)' }}
+          />
+          <motion.div 
+            className="fixed top-[60%] right-[5%] w-96 h-96 rounded-full -z-10 opacity-60 pointer-events-none will-change-transform"
+            style={{ y: yShape2, rotate: rotateShape, backgroundImage: 'radial-gradient(circle, rgba(226, 232, 240, 0.8) 0%, rgba(255, 255, 255, 0) 70%)' }}
+          />
+        </>
+      )}
       
       {/* Hero Section */}
       <section ref={heroRef} className="min-h-[100svh] flex flex-col justify-center items-center text-center px-4 md:px-6 relative overflow-hidden">
@@ -225,16 +233,48 @@ const Home = () => {
 
         {/* Minimalist Layout: UI Clutter Removed */}
 
-        {/* WebGL Canvas */}
-        <div className="absolute inset-0 z-0 pointer-events-none">
-          <Canvas eventSource={document.body} eventPrefix="client" camera={{ position: [0, 0, 8], fov: 45 }}>
-            <ambientLight intensity={2} />
-            <directionalLight position={[5, 5, 5]} intensity={2.5} color="#ffffff" />
-            <Environment preset="studio" />
-            <Particles />
-            <FluidGlass />
-          </Canvas>
-        </div>
+        {/* WebGL Canvas — FIX 1: skip entirely on mobile for massive perf gain */}
+        {!isMobile && (
+          <div className="absolute inset-0 z-0 pointer-events-none">
+            <Canvas eventSource={document.body} eventPrefix="client" camera={{ position: [0, 0, 8], fov: 45 }}>
+              <ambientLight intensity={2} />
+              <directionalLight position={[5, 5, 5]} intensity={2.5} color="#ffffff" />
+              <Environment preset="studio" />
+              <Particles />
+              <FluidGlass />
+            </Canvas>
+          </div>
+        )}
+
+        {/* Mobile Orb Fallback — CSS gradient orbs replace WebGL on mobile */}
+        {isMobile && (
+          <div className="absolute inset-0 z-0 pointer-events-none overflow-hidden">
+            <div style={{
+              position: 'absolute',
+              top: '50%',
+              left: '50%',
+              transform: 'translate(-50%, -50%)',
+              width: '600px',
+              height: '600px',
+              borderRadius: '50%',
+              background: 'radial-gradient(circle at 40% 40%, rgba(148, 163, 184, 0.25) 0%, rgba(226, 232, 240, 0.12) 40%, transparent 70%)',
+              animation: 'orbPulse 6s ease-in-out infinite',
+              filter: 'blur(40px)',
+            }} />
+            <div style={{
+              position: 'absolute',
+              top: '30%',
+              left: '60%',
+              transform: 'translate(-50%, -50%)',
+              width: '400px',
+              height: '400px',
+              borderRadius: '50%',
+              background: 'radial-gradient(circle at 60% 60%, rgba(203, 213, 225, 0.2) 0%, transparent 70%)',
+              animation: 'orbPulse 8s ease-in-out infinite reverse',
+              filter: 'blur(30px)',
+            }} />
+          </div>
+        )}
 
         <motion.div 
           className="max-w-6xl mx-auto z-10 w-full relative pointer-events-none"
@@ -280,11 +320,12 @@ const Home = () => {
 
       {/* Massive Scrolling Typography (Parallax/Scrubbing) */}
       <section className="py-24 flex flex-col gap-8 overflow-hidden bg-white dark:bg-[#000000] relative z-10 border-y border-slate-100 dark:border-slate-900 transition-colors duration-500">
-        <motion.div style={{ x: textX1 }} className="flex whitespace-nowrap text-[6rem] md:text-[12rem] font-black text-slate-50 dark:text-slate-900/50 tracking-tighter uppercase leading-none select-none transition-colors duration-500 will-change-transform transform-gpu">
+        {/* FIX 4 — Mobile font capped at 4rem (was 6rem) to reduce paint cost */}
+        <motion.div style={{ x: textX1 }} className="flex whitespace-nowrap text-[4rem] md:text-[12rem] font-black text-slate-50 dark:text-slate-900/50 tracking-tighter uppercase leading-none select-none transition-colors duration-500 will-change-transform transform-gpu">
           <span className="pr-16">CHETAN WEB STUDIO • AVANT-GARDE • CHETAN WEB STUDIO • AVANT-GARDE</span>
           <span className="pr-16">CHETAN WEB STUDIO • AVANT-GARDE • CHETAN WEB STUDIO • AVANT-GARDE</span>
         </motion.div>
-        <motion.div style={{ x: textX2 }} className="flex whitespace-nowrap text-[6rem] md:text-[12rem] font-black text-slate-50 dark:text-slate-900/50 tracking-tighter uppercase leading-none select-none transition-colors duration-500 will-change-transform transform-gpu">
+        <motion.div style={{ x: textX2 }} className="flex whitespace-nowrap text-[4rem] md:text-[12rem] font-black text-slate-50 dark:text-slate-900/50 tracking-tighter uppercase leading-none select-none transition-colors duration-500 will-change-transform transform-gpu">
           <span className="pr-16">DIGITAL STOREFRONTS • ELITE BRANDS • DIGITAL STOREFRONTS • ELITE BRANDS</span>
           <span className="pr-16">DIGITAL STOREFRONTS • ELITE BRANDS • DIGITAL STOREFRONTS • ELITE BRANDS</span>
         </motion.div>
