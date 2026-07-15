@@ -8,6 +8,7 @@ const Contact = () => {
     email: '',
     company: '',
     budget: '',
+    customBudget: '',
     projectDetails: ''
   });
 
@@ -27,7 +28,7 @@ const Contact = () => {
     setFormData({ ...formData, [e.target.name]: e.target.value });
   };
 
-  const isFormValid = formData.name && formData.email && formData.company && formData.budget && formData.projectDetails && captchaToken !== null;
+  const isFormValid = formData.name && formData.email && formData.company && formData.budget && formData.projectDetails && captchaToken !== null && (formData.budget !== 'custom' || (formData.budget === 'custom' && Number(formData.customBudget) >= 100000));
 
   const handleSubmit = async (e) => {
     e.preventDefault();
@@ -49,7 +50,7 @@ const Contact = () => {
         const result = await response.json();
         if (result.success) {
           setIsSuccess(true);
-          setFormData({ name: '', email: '', company: '', budget: '', projectDetails: '' });
+          setFormData({ name: '', email: '', company: '', budget: '', customBudget: '', projectDetails: '' });
         } else {
           alert("Something went wrong. Please try again.");
         }
@@ -171,11 +172,34 @@ const Contact = () => {
                   required
                 >
                   <option value="" disabled>Select a budget range</option>
-                  <option value="$10k+">$10k+</option>
-                  <option value="$25k+">$25k+</option>
-                  <option value="$50k+">$50k+</option>
+                  <option value="₹2L - ₹5L / $2k - $6k">₹2L - ₹5L / $2k - $6k</option>
+                  <option value="₹5L - ₹10L / $6k - $12k">₹5L - ₹10L / $6k - $12k</option>
+                  <option value="₹10L+ / $12k+">₹10L+ / $12k+</option>
+                  <option value="custom">Enter Custom Budget (INR)</option>
                 </select>
               </div>
+
+              {formData.budget === 'custom' && (
+                <motion.div 
+                  initial={{ opacity: 0, height: 0 }} 
+                  animate={{ opacity: 1, height: 'auto' }} 
+                  className="space-y-2 pt-2"
+                >
+                  <label htmlFor="customBudget" className="text-sm font-semibold text-text-main">Custom Budget Amount (₹)</label>
+                  <input 
+                    type="number" 
+                    id="customBudget" 
+                    name="customBudget" 
+                    value={formData.customBudget}
+                    onChange={handleChange}
+                    min="100000"
+                    className="w-full bg-transparent border-b border-border py-3 focus:outline-none focus:border-text-main transition-colors text-lg"
+                    placeholder="e.g. 150000"
+                    required
+                  />
+                  <p className="text-xs text-text-muted">Minimum engagement is ₹1,00,000</p>
+                </motion.div>
+              )}
 
               <div className="space-y-2 pb-4">
                 <label htmlFor="projectDetails" className="text-sm font-semibold text-text-main">Project Details</label>
