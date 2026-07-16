@@ -401,6 +401,12 @@
   .z-\[9999\] {
     z-index: 9999;
   }
+  .col-start-1 {
+    grid-column-start: 1;
+  }
+  .row-start-1 {
+    grid-row-start: 1;
+  }
   .container {
     width: 100%;
     @media (width >= 40rem) {
@@ -762,6 +768,9 @@
   .overflow-hidden {
     overflow: hidden;
   }
+  .overflow-x-hidden {
+    overflow-x: hidden;
+  }
   .overflow-y-auto {
     overflow-y: auto;
   }
@@ -967,6 +976,9 @@
   }
   .pt-24 {
     padding-top: calc(var(--spacing) * 24);
+  }
+  .pt-28 {
+    padding-top: calc(var(--spacing) * 28);
   }
   .pt-32 {
     padding-top: calc(var(--spacing) * 32);
@@ -1684,6 +1696,11 @@
   .md\:px-\[20vw\] {
     @media (width >= 48rem) {
       padding-inline: 20vw;
+    }
+  }
+  .md\:py-16 {
+    @media (width >= 48rem) {
+      padding-block: calc(var(--spacing) * 16);
     }
   }
   .md\:py-48 {

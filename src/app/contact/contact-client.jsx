@@ -140,7 +140,7 @@ export default function ContactPage() {
   };
 
   return (
-    <div ref={containerRef} className="w-full h-[100dvh] bg-[#050505] text-[#F2F2F2] overflow-hidden flex flex-col font-sans pt-20 md:pt-32">
+    <div ref={containerRef} className="w-full min-h-screen bg-[#050505] text-[#F2F2F2] overflow-x-hidden flex flex-col font-sans pt-28 md:pt-32">
       
       {/* HEADER */}
       <header className="w-full flex flex-row justify-between items-center p-4 md:p-8 border-b border-[#2A2A2A] z-10 bg-[#050505]">
@@ -154,17 +154,17 @@ export default function ContactPage() {
       </header>
 
       {/* FORM CONTAINER */}
-      <main className="flex-grow relative w-full h-full">
+      <main className="flex-grow w-full grid grid-cols-1">
         {isSuccess ? (
-          <div className="absolute inset-0 flex flex-col items-center justify-center text-center px-4">
+          <div className="col-start-1 row-start-1 flex flex-col items-center justify-center text-center px-4 py-12">
             <h2 className="text-3xl md:text-5xl font-black font-heading uppercase mb-6 text-[#F2F2F2]">Transmission Received.</h2>
             <p className="text-[#A0A0A0] text-xl max-w-2xl font-mono">Our architects will review your blueprint and initiate contact shortly.</p>
           </div>
         ) : (
-          <form onSubmit={handleSubmit} className="w-full h-full max-w-4xl mx-auto relative px-4">
+          <form onSubmit={handleSubmit} className="col-start-1 row-start-1 w-full max-w-4xl mx-auto grid grid-cols-1 px-4">
           
           {/* STEP 1 */}
-          <div id="step-1" data-lenis-prevent="true" className={`absolute inset-0 flex flex-col justify-start md:justify-center px-4 py-8 overflow-y-auto ${currentStep === 1 ? 'z-10' : 'z-0 opacity-0 pointer-events-none'}`}>
+          <div id="step-1" className={`col-start-1 row-start-1 flex flex-col justify-start md:justify-center py-12 md:py-16 ${currentStep === 1 ? 'z-10' : 'z-0 opacity-0 pointer-events-none'}`}>
             <h2 className="text-3xl md:text-5xl font-black font-heading uppercase mb-12 text-[#F2F2F2]">Who are we speaking with?</h2>
             
             <div className="grid grid-cols-1 md:grid-cols-2 gap-px bg-[#2A2A2A] border border-[#2A2A2A]">
@@ -225,7 +225,7 @@ export default function ContactPage() {
           </div>
 
           {/* STEP 2 */}
-          <div id="step-2" data-lenis-prevent="true" className={`absolute inset-0 flex flex-col justify-start md:justify-center px-4 py-8 overflow-y-auto ${currentStep === 2 ? 'z-10' : 'z-0 opacity-0 pointer-events-none'} translate-x-full`}>
+          <div id="step-2" className={`col-start-1 row-start-1 flex flex-col justify-start md:justify-center py-12 md:py-16 ${currentStep === 2 ? 'z-10' : 'z-0 opacity-0 pointer-events-none'} translate-x-full`}>
             <h2 className="text-3xl md:text-5xl font-black font-heading uppercase mb-12 text-[#F2F2F2]">What vision are we bringing to life?</h2>
             
             <div className={`grid grid-cols-1 md:grid-cols-2 gap-px bg-[#2A2A2A] border border-[#2A2A2A] ${errors.service ? 'error-shake' : ''}`}>
@@ -250,7 +250,7 @@ export default function ContactPage() {
           </div>
 
           {/* STEP 3 */}
-          <div id="step-3" data-lenis-prevent="true" className={`absolute inset-0 flex flex-col justify-start md:justify-center px-4 py-8 overflow-y-auto ${currentStep === 3 ? 'z-10' : 'z-0 opacity-0 pointer-events-none'} translate-x-full`}>
+          <div id="step-3" className={`col-start-1 row-start-1 flex flex-col justify-start md:justify-center py-12 md:py-16 ${currentStep === 3 ? 'z-10' : 'z-0 opacity-0 pointer-events-none'} translate-x-full`}>
             <h2 className="text-3xl md:text-5xl font-black font-heading uppercase mb-6 text-[#F2F2F2]">What is the scale of this transformation?</h2>
             <p className="text-[#A0A0A0] text-xl mb-12 max-w-2xl font-mono">Our engagements are comprehensive and bespoke. We cater exclusively to premium and enterprise-grade brand executions.</p>
             
@@ -283,7 +283,7 @@ export default function ContactPage() {
           </div>
 
           {/* STEP 4 */}
-          <div id="step-4" data-lenis-prevent="true" className={`absolute inset-0 flex flex-col justify-start md:justify-center px-4 py-8 overflow-y-auto ${currentStep === 4 ? 'z-10' : 'z-0 opacity-0 pointer-events-none'} translate-x-full`}>
+          <div id="step-4" className={`col-start-1 row-start-1 flex flex-col justify-start md:justify-center py-12 md:py-16 ${currentStep === 4 ? 'z-10' : 'z-0 opacity-0 pointer-events-none'} translate-x-full`}>
             <h2 className="text-3xl md:text-5xl font-black font-heading uppercase mb-12 text-[#F2F2F2]">The Blueprint.</h2>
             
             <div className="grid grid-cols-1 gap-px bg-[#2A2A2A] border border-[#2A2A2A]">
