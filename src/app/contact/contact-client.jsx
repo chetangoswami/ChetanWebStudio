@@ -140,15 +140,15 @@ export default function ContactPage() {
   };
 
   return (
-    <div ref={containerRef} className="w-full h-screen bg-[#050505] text-[#F2F2F2] overflow-hidden flex flex-col font-sans pt-24 md:pt-32">
+    <div ref={containerRef} className="w-full h-[100dvh] bg-[#050505] text-[#F2F2F2] overflow-hidden flex flex-col font-sans pt-20 md:pt-32">
       
       {/* HEADER */}
-      <header className="w-full flex justify-between items-center p-8 border-b border-[#2A2A2A] z-10 bg-[#050505]">
+      <header className="w-full flex flex-row justify-between items-center p-4 md:p-8 border-b border-[#2A2A2A] z-10 bg-[#050505]">
         <div>
-          <h1 className="text-xl font-bold uppercase tracking-widest text-[#F2F2F2]">Initiate Your Transformation.</h1>
-          <p className="text-[#A0A0A0] text-sm mt-2 font-mono">Apply to partner with Chetan Web Studio.</p>
+          <h1 className="text-sm md:text-xl font-bold uppercase tracking-widest text-[#F2F2F2]">Initiate Your Transformation.</h1>
+          <p className="text-[#A0A0A0] text-xs md:text-sm mt-1 font-mono">Apply to partner with Chetan Web Studio.</p>
         </div>
-        <div className="font-mono text-2xl font-bold tracking-widest text-[#F2F2F2]">
+        <div className="font-mono text-sm md:text-2xl font-bold tracking-widest text-[#F2F2F2] whitespace-nowrap">
           [ 0{currentStep} / 0{totalSteps} ]
         </div>
       </header>
@@ -157,15 +157,15 @@ export default function ContactPage() {
       <main className="flex-grow relative w-full h-full">
         {isSuccess ? (
           <div className="absolute inset-0 flex flex-col items-center justify-center text-center px-4">
-            <h2 className="text-4xl md:text-5xl font-black font-heading uppercase mb-6 text-[#F2F2F2]">Transmission Received.</h2>
+            <h2 className="text-3xl md:text-5xl font-black font-heading uppercase mb-6 text-[#F2F2F2]">Transmission Received.</h2>
             <p className="text-[#A0A0A0] text-xl max-w-2xl font-mono">Our architects will review your blueprint and initiate contact shortly.</p>
           </div>
         ) : (
           <form onSubmit={handleSubmit} className="w-full h-full max-w-4xl mx-auto relative px-4">
           
           {/* STEP 1 */}
-          <div id="step-1" className={`absolute inset-0 flex flex-col justify-center px-4 ${currentStep === 1 ? 'z-10' : 'z-0 opacity-0 pointer-events-none'}`}>
-            <h2 className="text-4xl md:text-5xl font-black font-heading uppercase mb-12 text-[#F2F2F2]">Who are we speaking with?</h2>
+          <div id="step-1" className={`absolute inset-0 flex flex-col justify-start md:justify-center px-4 py-8 overflow-y-auto ${currentStep === 1 ? 'z-10' : 'z-0 opacity-0 pointer-events-none'}`}>
+            <h2 className="text-3xl md:text-5xl font-black font-heading uppercase mb-12 text-[#F2F2F2]">Who are we speaking with?</h2>
             
             <div className="grid grid-cols-1 md:grid-cols-2 gap-px bg-[#2A2A2A] border border-[#2A2A2A]">
               <div className={`p-8 bg-[#050505] flex flex-col ${errors.name ? 'error-shake' : ''}`}>
@@ -225,8 +225,8 @@ export default function ContactPage() {
           </div>
 
           {/* STEP 2 */}
-          <div id="step-2" className={`absolute inset-0 flex flex-col justify-center px-4 ${currentStep === 2 ? 'z-10' : 'z-0 opacity-0 pointer-events-none'} translate-x-full`}>
-            <h2 className="text-4xl md:text-5xl font-black font-heading uppercase mb-12 text-[#F2F2F2]">What vision are we bringing to life?</h2>
+          <div id="step-2" className={`absolute inset-0 flex flex-col justify-start md:justify-center px-4 py-8 overflow-y-auto ${currentStep === 2 ? 'z-10' : 'z-0 opacity-0 pointer-events-none'} translate-x-full`}>
+            <h2 className="text-3xl md:text-5xl font-black font-heading uppercase mb-12 text-[#F2F2F2]">What vision are we bringing to life?</h2>
             
             <div className={`grid grid-cols-1 md:grid-cols-2 gap-px bg-[#2A2A2A] border border-[#2A2A2A] ${errors.service ? 'error-shake' : ''}`}>
               {['Immersive Brand Experience', 'E-Commerce Masterpiece', 'Enterprise Web Application', 'Bespoke Custom Architecture'].map((option, idx) => (
@@ -250,8 +250,8 @@ export default function ContactPage() {
           </div>
 
           {/* STEP 3 */}
-          <div id="step-3" className={`absolute inset-0 flex flex-col justify-center px-4 ${currentStep === 3 ? 'z-10' : 'z-0 opacity-0 pointer-events-none'} translate-x-full`}>
-            <h2 className="text-4xl md:text-5xl font-black font-heading uppercase mb-6 text-[#F2F2F2]">What is the scale of this transformation?</h2>
+          <div id="step-3" className={`absolute inset-0 flex flex-col justify-start md:justify-center px-4 py-8 overflow-y-auto ${currentStep === 3 ? 'z-10' : 'z-0 opacity-0 pointer-events-none'} translate-x-full`}>
+            <h2 className="text-3xl md:text-5xl font-black font-heading uppercase mb-6 text-[#F2F2F2]">What is the scale of this transformation?</h2>
             <p className="text-[#A0A0A0] text-xl mb-12 max-w-2xl font-mono">Our engagements are comprehensive and bespoke. We cater exclusively to premium and enterprise-grade brand executions.</p>
             
             <div className={`grid grid-cols-1 md:grid-cols-3 gap-px bg-[#2A2A2A] border border-[#2A2A2A] ${errors.scale ? 'error-shake' : ''}`}>
@@ -283,8 +283,8 @@ export default function ContactPage() {
           </div>
 
           {/* STEP 4 */}
-          <div id="step-4" className={`absolute inset-0 flex flex-col justify-center px-4 ${currentStep === 4 ? 'z-10' : 'z-0 opacity-0 pointer-events-none'} translate-x-full`}>
-            <h2 className="text-4xl md:text-5xl font-black font-heading uppercase mb-12 text-[#F2F2F2]">The Blueprint.</h2>
+          <div id="step-4" className={`absolute inset-0 flex flex-col justify-start md:justify-center px-4 py-8 overflow-y-auto ${currentStep === 4 ? 'z-10' : 'z-0 opacity-0 pointer-events-none'} translate-x-full`}>
+            <h2 className="text-3xl md:text-5xl font-black font-heading uppercase mb-12 text-[#F2F2F2]">The Blueprint.</h2>
             
             <div className="grid grid-cols-1 gap-px bg-[#2A2A2A] border border-[#2A2A2A]">
               <div className={`p-8 bg-[#050505] flex flex-col ${errors.timeline ? 'error-shake' : ''}`}>
@@ -347,7 +347,7 @@ export default function ContactPage() {
               type="button" 
               onClick={prevStep}
               disabled={currentStep === 1}
-              className={`text-xl font-bold uppercase tracking-widest ${currentStep === 1 ? 'opacity-20 cursor-not-allowed' : 'hover:text-[#A0A0A0] transition-colors'}`}
+              className={`text-sm md:text-xl font-bold uppercase tracking-widest ${currentStep === 1 ? 'opacity-20 cursor-not-allowed' : 'hover:text-[#A0A0A0] transition-colors'}`}
             >
               ← Back
             </button>
@@ -356,7 +356,7 @@ export default function ContactPage() {
               <button 
                 type="button" 
                 onClick={nextStep}
-                className="text-xl font-bold uppercase tracking-widest px-12 h-full border-l border-r border-[#2A2A2A] hover:bg-[#F2F2F2] hover:text-[#050505] transition-all duration-[0ms] hover:scale-[0.98] group"
+                className="text-sm md:text-xl font-bold uppercase tracking-widest px-6 md:px-12 h-full border-l border-r border-[#2A2A2A] hover:bg-[#F2F2F2] hover:text-[#050505] transition-all duration-[0ms] hover:scale-[0.98] group"
               >
                 Next Step <span className="inline-block transition-transform group-hover:translate-x-2">→</span>
               </button>
@@ -365,7 +365,7 @@ export default function ContactPage() {
                 type="button" 
                 onClick={handleSubmit}
                 disabled={isSubmitting}
-                className={`text-xl font-bold uppercase tracking-widest px-12 h-full border-l border-r border-[#2A2A2A] bg-transparent text-[#F2F2F2] transition-all duration-[0ms] ${isSubmitting ? 'opacity-50 cursor-not-allowed' : 'hover:bg-[#F2F2F2] hover:text-[#050505] hover:scale-[0.98]'}`}
+                className={`text-sm md:text-xl font-bold uppercase tracking-widest px-6 md:px-12 h-full border-l border-r border-[#2A2A2A] bg-transparent text-[#F2F2F2] transition-all duration-[0ms] ${isSubmitting ? 'opacity-50 cursor-not-allowed' : 'hover:bg-[#F2F2F2] hover:text-[#050505] hover:scale-[0.98]'}`}
               >
                 {isSubmitting ? 'SUBMITTING...' : 'Submit Application'}
               </button>
