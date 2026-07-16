@@ -19,10 +19,12 @@ export function SmoothScroller({ children }) {
     if (lenis) {
       lenis.stop();
       
-      // Delay the scroll reset by 150ms to ensure Next.js has swapped the DOM
+      // Execute scroll reset synchronously
+      window.scrollTo(0, 0);
+      lenis.scrollTo(0, { immediate: true });
+      
+      // Delay the scroll trigger refresh by 150ms to ensure Next.js has swapped the DOM
       setTimeout(() => {
-        window.scrollTo(0, 0);
-        lenis.scrollTo(0, { immediate: true });
         lenis.start();
         ScrollTrigger.refresh();
       }, 150);
