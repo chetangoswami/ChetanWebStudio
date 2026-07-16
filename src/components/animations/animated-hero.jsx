@@ -153,73 +153,80 @@ export function AnimatedHero() {
       );
     }
 
-    // Act 2: The Rupture
-    if (act2Ref.current && monolithLeftRef.current && monolithRightRef.current) {
-      const ruptureTl = gsap.timeline({
-        scrollTrigger: {
-          trigger: act2Ref.current,
-          start: 'top top',
-          end: '+=1200',
-          scrub: true,
-          pin: true,
-          anticipatePin: 1
-        }
-      });
+    let mm = gsap.matchMedia(containerRef);
+    mm.add({ isDesktop: "(min-width: 768px)", isMobile: "(max-width: 767px)" }, (context) => {
+      let { isMobile, isDesktop } = context.conditions;
 
-      ruptureTl.to(monolithLeftRef.current, {
-        clipPath: 'polygon(0% 0%, 0% 0%, 0% 100%, 0% 100%)',
-        ease: 'none'
-      }, 0);
+      // Act 2: The Rupture
+      if (act2Ref.current && monolithLeftRef.current && monolithRightRef.current) {
+        const ruptureTl = gsap.timeline({
+          scrollTrigger: {
+            trigger: act2Ref.current,
+            start: 'top top',
+            end: isMobile ? '+=600' : '+=1200',
+            scrub: true,
+            pin: true,
+            anticipatePin: 1
+          }
+        });
 
-      ruptureTl.to(monolithRightRef.current, {
-        clipPath: 'polygon(100% 0%, 100% 0%, 100% 100%, 100% 100%)',
-        ease: 'none'
-      }, 0);
-    }
+        ruptureTl.to(monolithLeftRef.current, {
+          clipPath: 'polygon(0% 0%, 0% 0%, 0% 100%, 0% 100%)',
+          ease: 'none'
+        }, 0);
 
-    // Act 3: Horizontal Scroll (Pin & Translate)
-    if (promenadeWrapperRef.current && promenadeRef.current) {
-      const wrapper = promenadeWrapperRef.current;
-      const container = promenadeRef.current;
+        ruptureTl.to(monolithRightRef.current, {
+          clipPath: 'polygon(100% 0%, 100% 0%, 100% 100%, 100% 100%)',
+          ease: 'none'
+        }, 0);
+      }
 
-      const getScrollAmount = () => {
-        return -(container.scrollWidth - window.innerWidth);
-      };
+      // Act 3: Horizontal Scroll (Pin & Translate)
+      if (isDesktop) {
+        if (promenadeWrapperRef.current && promenadeRef.current) {
+          const wrapper = promenadeWrapperRef.current;
+          const container = promenadeRef.current;
 
-      const tween = gsap.to(container, {
-        x: getScrollAmount,
-        ease: 'none',
-        scrollTrigger: {
-          trigger: wrapper,
-          start: 'top top',
-          end: '+=2000',
-          pin: true,
-          scrub: 1,
-          invalidateOnRefresh: true,
-          pinSpacing: true
-        }
-      });
+          const getScrollAmount = () => {
+            return -(container.scrollWidth - window.innerWidth);
+          };
 
-      // Horizontal Parallax
-      const cards = gsap.utils.toArray('.parallax-img', container);
-      cards.forEach((img) => {
-        gsap.fromTo(
-          img,
-          { x: '-10%' },
-          {
-            x: '10%',
+          const tween = gsap.to(container, {
+            x: getScrollAmount,
             ease: 'none',
             scrollTrigger: {
-              trigger: img.closest('.portfolio-card'),
-              containerAnimation: tween,
-              start: 'left right',
-              end: 'right left',
-              scrub: true
+              trigger: wrapper,
+              start: 'top top',
+              end: '+=2000',
+              pin: true,
+              scrub: 1,
+              invalidateOnRefresh: true,
+              pinSpacing: true
             }
-          }
-        );
-      });
-    }
+          });
+
+          // Horizontal Parallax
+          const cards = gsap.utils.toArray('.parallax-img', container);
+          cards.forEach((img) => {
+            gsap.fromTo(
+              img,
+              { x: '-10%' },
+              {
+                x: '10%',
+                ease: 'none',
+                scrollTrigger: {
+                  trigger: img.closest('.portfolio-card'),
+                  containerAnimation: tween,
+                  start: 'left right',
+                  end: 'right left',
+                  scrub: true
+                }
+              }
+            );
+          });
+        }
+      }
+    });
 
     // Act 4: Capabilities Grid Fade-Up
     const gridItems = gsap.utils.toArray('.capability-item');
@@ -379,16 +386,19 @@ export function AnimatedHero() {
       <section ref={promenadeWrapperRef} className="w-full bg-[#f0f0f0] overflow-hidden flex items-center min-h-screen">
         <div 
           ref={promenadeRef}
-          className="flex w-max gap-8 md:gap-16 px-[5vw] md:px-[20vw] items-center"
+          className="flex w-full md:w-max gap-8 md:gap-16 px-[5vw] md:px-[20vw] items-center flex-nowrap overflow-x-auto md:overflow-x-visible hide-scrollbar snap-x snap-mandatory"
+          data-lenis-prevent="true"
         >
           <style dangerouslySetInnerHTML={{ __html: `
             .outline-draw { outline: 1px solid transparent; outline-offset: 10px; transition: outline-color 0.4s ease, outline-offset 0.4s ease; }
             .outline-draw:hover { outline-color: #1E90FF; outline-offset: -10px; }
             .portfolio-card, .portfolio-card * { cursor: none !important; }
+            .hide-scrollbar::-webkit-scrollbar { display: none; }
+            .hide-scrollbar { -ms-overflow-style: none; scrollbar-width: none; }
           `}} />
 
           {/* Intro Card */}
-          <div className="shrink-0 w-[85vw] md:w-[40vw] flex flex-col justify-center h-[60vh]">
+          <div className="shrink-0 w-[85vw] md:w-[40vw] flex flex-col justify-center h-[60vh] snap-center">
             <span className="text-sm font-bold tracking-[0.2em] text-[#666] uppercase mb-4 block">
               The Archive
             </span>
@@ -400,7 +410,7 @@ export function AnimatedHero() {
           {/* Portfolio Card 1 */}
           <Link 
             href="/work/ikoho"
-            className="portfolio-card shrink-0 w-[85vw] md:w-[60vw] group block"
+            className="portfolio-card shrink-0 w-[85vw] md:w-[60vw] group block snap-center"
             onMouseEnter={handleCardMouseEnter}
             onMouseLeave={handleCardMouseLeave}
           >
@@ -422,7 +432,7 @@ export function AnimatedHero() {
           {/* Portfolio Card 2 */}
           <Link 
             href="/work/your-india-holidays"
-            className="portfolio-card shrink-0 w-[85vw] md:w-[60vw] group block"
+            className="portfolio-card shrink-0 w-[85vw] md:w-[60vw] group block snap-center"
             onMouseEnter={handleCardMouseEnter}
             onMouseLeave={handleCardMouseLeave}
           >
@@ -442,7 +452,7 @@ export function AnimatedHero() {
           </Link>
 
           {/* Outro CTA Card */}
-          <div className="shrink-0 w-[85vw] md:w-[40vw] flex flex-col justify-center items-start h-[60vh] pr-[10vw]">
+          <div className="shrink-0 w-[85vw] md:w-[40vw] flex flex-col justify-center items-start h-[60vh] pr-[10vw] snap-center">
             <h2 className="text-5xl md:text-7xl font-black tracking-tighter text-[#0a0a0a] uppercase mb-8 font-heading">
               Ready to<br/>Scale?
             </h2>
