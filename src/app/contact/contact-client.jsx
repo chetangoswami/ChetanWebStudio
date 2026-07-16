@@ -164,7 +164,7 @@ export default function ContactPage() {
           <form onSubmit={handleSubmit} className="w-full h-full max-w-4xl mx-auto relative px-4">
           
           {/* STEP 1 */}
-          <div id="step-1" className={`absolute inset-0 flex flex-col justify-start md:justify-center px-4 py-8 overflow-y-auto ${currentStep === 1 ? 'z-10' : 'z-0 opacity-0 pointer-events-none'}`}>
+          <div id="step-1" data-lenis-prevent="true" className={`absolute inset-0 flex flex-col justify-start md:justify-center px-4 py-8 overflow-y-auto ${currentStep === 1 ? 'z-10' : 'z-0 opacity-0 pointer-events-none'}`}>
             <h2 className="text-3xl md:text-5xl font-black font-heading uppercase mb-12 text-[#F2F2F2]">Who are we speaking with?</h2>
             
             <div className="grid grid-cols-1 md:grid-cols-2 gap-px bg-[#2A2A2A] border border-[#2A2A2A]">
@@ -225,7 +225,7 @@ export default function ContactPage() {
           </div>
 
           {/* STEP 2 */}
-          <div id="step-2" className={`absolute inset-0 flex flex-col justify-start md:justify-center px-4 py-8 overflow-y-auto ${currentStep === 2 ? 'z-10' : 'z-0 opacity-0 pointer-events-none'} translate-x-full`}>
+          <div id="step-2" data-lenis-prevent="true" className={`absolute inset-0 flex flex-col justify-start md:justify-center px-4 py-8 overflow-y-auto ${currentStep === 2 ? 'z-10' : 'z-0 opacity-0 pointer-events-none'} translate-x-full`}>
             <h2 className="text-3xl md:text-5xl font-black font-heading uppercase mb-12 text-[#F2F2F2]">What vision are we bringing to life?</h2>
             
             <div className={`grid grid-cols-1 md:grid-cols-2 gap-px bg-[#2A2A2A] border border-[#2A2A2A] ${errors.service ? 'error-shake' : ''}`}>
@@ -250,7 +250,7 @@ export default function ContactPage() {
           </div>
 
           {/* STEP 3 */}
-          <div id="step-3" className={`absolute inset-0 flex flex-col justify-start md:justify-center px-4 py-8 overflow-y-auto ${currentStep === 3 ? 'z-10' : 'z-0 opacity-0 pointer-events-none'} translate-x-full`}>
+          <div id="step-3" data-lenis-prevent="true" className={`absolute inset-0 flex flex-col justify-start md:justify-center px-4 py-8 overflow-y-auto ${currentStep === 3 ? 'z-10' : 'z-0 opacity-0 pointer-events-none'} translate-x-full`}>
             <h2 className="text-3xl md:text-5xl font-black font-heading uppercase mb-6 text-[#F2F2F2]">What is the scale of this transformation?</h2>
             <p className="text-[#A0A0A0] text-xl mb-12 max-w-2xl font-mono">Our engagements are comprehensive and bespoke. We cater exclusively to premium and enterprise-grade brand executions.</p>
             
@@ -283,7 +283,7 @@ export default function ContactPage() {
           </div>
 
           {/* STEP 4 */}
-          <div id="step-4" className={`absolute inset-0 flex flex-col justify-start md:justify-center px-4 py-8 overflow-y-auto ${currentStep === 4 ? 'z-10' : 'z-0 opacity-0 pointer-events-none'} translate-x-full`}>
+          <div id="step-4" data-lenis-prevent="true" className={`absolute inset-0 flex flex-col justify-start md:justify-center px-4 py-8 overflow-y-auto ${currentStep === 4 ? 'z-10' : 'z-0 opacity-0 pointer-events-none'} translate-x-full`}>
             <h2 className="text-3xl md:text-5xl font-black font-heading uppercase mb-12 text-[#F2F2F2]">The Blueprint.</h2>
             
             <div className="grid grid-cols-1 gap-px bg-[#2A2A2A] border border-[#2A2A2A]">
