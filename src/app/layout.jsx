@@ -11,11 +11,11 @@ const spaceGrotesk = Space_Grotesk({ subsets: ['latin'], variable: '--font-space
 
 export const metadata = {
   metadataBase: new URL('https://chetanwebstudio.com'),
-  title: 'Chetan Web Studio | Brutalist Architecture',
-  description: 'Premium WebGL & Next.js Experiences for Elite Brands.',
+  title: 'Chetan Web Studio | Premium Web & Digital Design',
+  description: 'A premium digital agency specializing in high-performance web development and bespoke digital experiences for global brands.',
   openGraph: {
-    title: 'Chetan Web Studio | Brutalist Architecture',
-    description: 'Premium WebGL & Next.js Experiences for Elite Brands.',
+    title: 'Chetan Web Studio | Premium Web & Digital Design',
+    description: 'A premium digital agency specializing in high-performance web development and bespoke digital experiences for global brands.',
     url: 'https://chetanwebstudio.com',
     siteName: 'Chetan Web Studio',
     images: [
@@ -31,8 +31,8 @@ export const metadata = {
   },
   twitter: {
     card: 'summary_large_image',
-    title: 'Chetan Web Studio | Brutalist Architecture',
-    description: 'Premium WebGL & Next.js Experiences for Elite Brands.',
+    title: 'Chetan Web Studio | Premium Web & Digital Design',
+    description: 'A premium digital agency specializing in high-performance web development and bespoke digital experiences for global brands.',
     images: ['https://chetanwebstudio.com/og-image.jpg'],
   },
 };
@@ -52,7 +52,7 @@ export default function RootLayout({ children }) {
               "image": "https://chetanwebstudio.com/images/og-image.jpg",
               "url": "https://chetanwebstudio.com",
               "priceRange": "$$$$",
-              "description": "Elite digital agency specializing in premium $10,000+ React and WebGL websites for global brands.",
+              "description": "A premium digital agency specializing in bespoke, high-performance web design and development for global brands.",
               "address": {
                 "@type": "PostalAddress",
                 "addressCountry": "IN"
