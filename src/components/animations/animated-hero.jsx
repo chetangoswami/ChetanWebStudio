@@ -251,7 +251,7 @@ export function AnimatedHero() {
         onUpdate: (self) => {
           const velocity = self.getVelocity();
           const skew = gsap.utils.clamp(-20, 20, velocity / 100);
-          gsap.to(marquee, { skewX: skew, duration: 0.8, ease: 'power3.out', overwrite: 'auto' });
+          gsap.to(marquee, { skewX: skew, duration: 0.8, ease: 'power3.out', overwrite: 'auto', force3D: true });
         }
       });
     }
@@ -529,11 +529,15 @@ export function AnimatedHero() {
         <div className="animate-marquee-wrapper whitespace-nowrap flex font-heading text-5xl md:text-8xl font-black text-[#0a0a0a] tracking-tighter uppercase">
           <style dangerouslySetInnerHTML={{ __html: `
             @keyframes marquee {
-              0% { transform: translateX(0%); }
-              100% { transform: translateX(-50%); }
+              0% { transform: translate3d(0%, 0, 0); }
+              100% { transform: translate3d(-50%, 0, 0); }
+            }
+            .animate-marquee-wrapper {
+              will-change: transform;
             }
             .animate-marquee {
               animation: marquee 20s linear infinite;
+              will-change: transform;
             }
           `}} />
           <div className="animate-marquee flex shrink-0">
@@ -546,28 +550,15 @@ export function AnimatedHero() {
       {/* ACT 6: THE CONVERSION / CTA */}
       <section className="act6-section w-full bg-[#0a0a0a] text-white min-h-[80vh] flex flex-col items-center justify-center relative px-4 text-center overflow-hidden">
         {/* Animated noise texture */}
-        <div className="absolute inset-0 opacity-[0.05] pointer-events-none mix-blend-overlay">
+        <div className="absolute inset-0 opacity-[0.05] pointer-events-none">
           <style dangerouslySetInnerHTML={{ __html: `
-            @keyframes filmGrain {
-              0%, 100% { transform: translate(0, 0); }
-              10% { transform: translate(-5%, -10%); }
-              20% { transform: translate(-15%, 5%); }
-              30% { transform: translate(7%, -25%); }
-              40% { transform: translate(-5%, 25%); }
-              50% { transform: translate(-15%, 10%); }
-              60% { transform: translate(15%, 0%); }
-              70% { transform: translate(0%, 15%); }
-              80% { transform: translate(3%, 35%); }
-              90% { transform: translate(-10%, 10%); }
-            }
             .animated-grain {
-              animation: filmGrain 8s steps(10) infinite;
-              background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noiseFilter'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.8' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noiseFilter)'/%3E%3C/svg%3E");
-              width: 300%;
-              height: 300%;
+              background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noiseFilter'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.8' numOctaves='1' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noiseFilter)'/%3E%3C/svg%3E");
+              width: 100%;
+              height: 100%;
               position: absolute;
-              top: -100%;
-              left: -100%;
+              top: 0;
+              left: 0;
             }
           `}} />
           <div className="animated-grain"></div>
