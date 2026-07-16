@@ -1,9 +1,3 @@
 {
-  "name": "chetan-web-studio",
-  "rewrites": [
-    {
-      "source": "/(.*)",
-      "destination": "/index.html"
-    }
-  ]
+  "name": "chetan-web-studio"
 }

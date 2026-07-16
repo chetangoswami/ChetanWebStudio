@@ -1,14 +1,17 @@
+'use client';
+
 import React, { useState, useEffect } from 'react';
 import { motion } from 'framer-motion';
-import { Link, useLocation } from 'react-router-dom';
+import Link from 'next/link';
+import { usePathname } from 'next/navigation';
 
-const Header = ({ isDarkMode, toggleDarkMode }) => {
+const Header = () => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
-  const location = useLocation();
+  const pathname = usePathname();
 
   useEffect(() => {
     setIsMenuOpen(false);
-  }, [location.pathname]);
+  }, [pathname]);
 
   const customEase = [0.22, 1, 0.36, 1];
 
@@ -18,82 +21,79 @@ const Header = ({ isDarkMode, toggleDarkMode }) => {
   };
 
   return (
-    <>
-      <nav className="fixed w-full top-0 z-50 bg-primary/80 backdrop-blur-xl border-b border-border transition-colors duration-500">
-        <div className="max-w-7xl mx-auto px-4 md:px-6 py-4 flex justify-between items-center">
+    <header>
+      <nav className="fixed w-full top-0 z-50 bg-[#0a0a0a]/80 backdrop-blur-md border-b border-[#333] transition-colors duration-500">
+        <div className="max-w-7xl mx-auto px-4 md:px-6 py-8 flex justify-between items-center">
           
           <motion.div 
-            initial="hidden" animate="visible" variants={fadeUpVariant}
-            className="text-lg md:text-xl font-bold tracking-tight font-heading"
+            animate="visible" variants={fadeUpVariant}
+            className="text-lg md:text-xl font-bold tracking-tight font-heading text-[#f5f5f5]"
           >
-            <Link to="/" aria-label="Chetan Web Studio Home">Chetan Web Studio</Link>
+            <Link href="/" aria-label="Chetan Web Studio Home">Chetan Web Studio</Link>
           </motion.div>
           
           <motion.div 
-            initial={{ opacity: 0, y: -20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.8, delay: 0.1, ease: customEase }}
-            className="flex items-center gap-6 md:gap-8 text-sm font-medium text-text-main"
+            className="flex items-center gap-6 md:gap-8 text-sm font-medium text-[#f5f5f5]"
           >
             <motion.span whileHover={{ y: -2 }} transition={{ duration: 0.2, ease: 'easeOut' }} className="hidden md:block">
-              <Link to="/work" className="hover:text-accent transition-colors duration-300">Work</Link>
+              <Link href="/work" className="hover:text-[#888] transition-colors duration-300">Work</Link>
             </motion.span>
             <motion.span whileHover={{ y: -2 }} transition={{ duration: 0.2, ease: 'easeOut' }} className="hidden md:block">
-              <Link to="/studio" className="hover:text-accent transition-colors duration-300">Studio</Link>
+              <Link href="/studio" className="hover:text-[#888] transition-colors duration-300">Studio</Link>
             </motion.span>
             <motion.span whileHover={{ y: -2 }} transition={{ duration: 0.2, ease: 'easeOut' }} className="hidden md:block">
-              <Link to="/contact" className="hover:text-accent transition-colors duration-300">Contact</Link>
+              <Link href="/contact" className="hover:text-[#888] transition-colors duration-300">Contact</Link>
             </motion.span>
             
             <motion.span whileHover={{ y: -2 }} transition={{ duration: 0.2, ease: 'easeOut' }} className="hidden md:inline-flex">
-              <Link to="/contact" className="px-5 py-2.5 bg-text-main text-primary rounded-full text-xs font-semibold hover:bg-accent hover:text-white transition-all duration-300">
+              <Link href="/contact" className="px-5 py-2.5 bg-[#f5f5f5] text-[#0a0a0a] font-bold border border-[#f5f5f5] hover:bg-transparent hover:text-[#f5f5f5] transition-colors duration-300 rounded-none">
                 Start a Project
               </Link>
             </motion.span>
 
-            <button 
-              onClick={toggleDarkMode}
-              className="w-10 h-10 flex items-center justify-center border border-border bg-glass rounded-full shadow-sm hover:-translate-y-1 hover:shadow-lg hover:border-accent hover:text-accent transition-all duration-500"
-              aria-label="Toggle Dark Mode"
-            >
-              {isDarkMode ? '🌙' : '☀️'}
-            </button>
+
             
             <button 
               onClick={() => setIsMenuOpen(!isMenuOpen)}
-              className="md:hidden flex flex-col justify-center items-center w-10 h-10 border border-border bg-glass rounded-full shadow-sm transition-all duration-300"
+              className="md:hidden flex flex-col justify-center items-center w-10 h-10 border border-[#333] bg-transparent transition-all duration-300 rounded-none"
+              aria-expanded={isMenuOpen}
+              aria-controls="mobile-menu"
+              aria-label="Toggle menu"
             >
-              <span className={`bg-text-main block transition-all duration-300 ease-out h-[1.5px] w-5 rounded-sm ${isMenuOpen ? 'rotate-45 translate-y-[5px]' : '-translate-y-1'}`}></span>
-              <span className={`bg-text-main block transition-all duration-300 ease-out h-[1.5px] w-5 rounded-sm my-0.5 ${isMenuOpen ? 'opacity-0' : 'opacity-100'}`}></span>
-              <span className={`bg-text-main block transition-all duration-300 ease-out h-[1.5px] w-5 rounded-sm ${isMenuOpen ? '-rotate-45 -translate-y-[5px]' : 'translate-y-1'}`}></span>
+              <span className={`bg-[#f5f5f5] block transition-all duration-300 ease-out h-[1.5px] w-5 rounded-sm ${isMenuOpen ? 'rotate-45 translate-y-[5px]' : '-translate-y-1'}`}></span>
+              <span className={`bg-[#f5f5f5] block transition-all duration-300 ease-out h-[1.5px] w-5 rounded-sm my-0.5 ${isMenuOpen ? 'opacity-0' : 'opacity-100'}`}></span>
+              <span className={`bg-[#f5f5f5] block transition-all duration-300 ease-out h-[1.5px] w-5 rounded-sm ${isMenuOpen ? '-rotate-45 -translate-y-[5px]' : 'translate-y-1'}`}></span>
             </button>
           </motion.div>
         </div>
         
         {isMenuOpen && (
           <motion.div 
+            id="mobile-menu"
             initial={{ opacity: 0, y: -10 }}
             animate={{ opacity: 1, y: 0 }}
-            className="md:hidden absolute top-full left-0 w-full bg-primary/95 backdrop-blur-2xl border-b border-border flex flex-col shadow-2xl"
+            className="md:hidden absolute top-full left-0 w-full bg-[#0a0a0a] border-b border-[#333] flex flex-col"
           >
             <motion.div whileHover={{ y: -2 }} transition={{ duration: 0.2, ease: 'easeOut' }}>
-              <Link to="/work" className="block p-6 border-b border-border/30 text-base font-medium hover:text-accent transition-colors">Work</Link>
+              <Link href="/work" className="block p-6 border-b border-[#333] text-base font-medium hover:text-[#f5f5f5] text-[#a0a0a0] transition-colors uppercase tracking-widest font-mono">Work</Link>
             </motion.div>
             <motion.div whileHover={{ y: -2 }} transition={{ duration: 0.2, ease: 'easeOut' }}>
-              <Link to="/studio" className="block p-6 border-b border-border/30 text-base font-medium hover:text-accent transition-colors">Studio</Link>
+              <Link href="/studio" className="block p-6 border-b border-[#333] text-base font-medium hover:text-[#f5f5f5] text-[#a0a0a0] transition-colors uppercase tracking-widest font-mono">Studio</Link>
             </motion.div>
             <motion.div whileHover={{ y: -2 }} transition={{ duration: 0.2, ease: 'easeOut' }}>
-              <Link to="/contact" className="block p-6 border-b border-border/30 text-base font-medium hover:text-accent transition-colors">Contact</Link>
+              <Link href="/contact" className="block p-6 border-b border-[#333] text-base font-medium hover:text-[#f5f5f5] text-[#a0a0a0] transition-colors uppercase tracking-widest font-mono">Contact</Link>
             </motion.div>
             <div className="p-6">
-              <Link to="/contact" className="block text-center px-4 py-3 bg-text-main text-primary rounded-full text-sm font-semibold hover:bg-accent hover:text-white transition-all duration-300">
+              <Link href="/contact" className="block text-center px-4 py-3 bg-[#f5f5f5] text-[#0a0a0a] rounded-none text-sm font-bold uppercase tracking-widest hover:bg-[#a0a0a0] hover:text-[#0a0a0a] transition-all duration-300">
                 Start a Project
               </Link>
             </div>
           </motion.div>
         )}
       </nav>
-    </>
+    </header>
   );
 };
 

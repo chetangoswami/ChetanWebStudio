@@ -1,0 +1,29 @@
+@import "tailwindcss";
+
+@theme {
+  --font-sans: var(--font-inter);
+  --font-heading: var(--font-space);
+}
+/* Core Lenis Resets */
+html.lenis {
+  height: auto;
+}
+
+.lenis.lenis-smooth {
+  scroll-behavior: auto;
+}
+
+/* Prevents scroll chaining inside specific containers */
+.lenis.lenis-smooth [data-lenis-prevent] {
+  overscroll-behavior: contain;
+}
+
+/* Halts scrolling entirely when Lenis is stopped programmatically */
+.lenis.lenis-stopped {
+  overflow: hidden;
+}
+
+/* Prevents iframe interaction blocking during active scroll momentum */
+.lenis.lenis-scrolling iframe {
+  pointer-events: none;
+}

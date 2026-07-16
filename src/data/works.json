@@ -1,0 +1,120 @@
+[
+  {
+    "id": "ikoho",
+    "slug": "ikoho",
+    "title": "Scaling a Luxury Streetwear Architecture",
+    "client": "Ikoho",
+    "clientDesc": "D2C Streetwear & Footwear",
+    "platform": "Shopify",
+    "platformDesc": "Customized Minimog Theme",
+    "role": "Technical Lead",
+    "roleDesc": "Shopify Architect",
+    "timeline": "Feb 2026 – Jul 2026",
+    "liveUrl": "https://ikoho.in",
+    "bottlenecks": [
+      { "id": "01", "title": "Conversion Friction & Cart Abandonment", "desc": "Broken variant swatches on mobile, lack of dynamic urgency engines." },
+      { "id": "02", "title": "Multimedia Pipeline Failures", "desc": "iOS Low Power Mode and Firefox Autoplay Shields blocking high-fashion editorial video assets, freezing UIs." },
+      { "id": "03", "title": "Checkout & Logistics Friction", "desc": "Complex API integrations required by Shiprocket/Fastrr (custom geolocation routing, B2B wholesale) unsupported by native Shopify." },
+      { "id": "04", "title": "Severe Technical Debt", "desc": "CSS overrides bloat, unoptimized JS event listeners, fragile DOM crashing during AJAX transitions." },
+      { "id": "05", "title": "SEO Cannibalization", "desc": "Bleeding organic Google traffic from ghost duplicates in XML sitemaps and missing Alt-Text tags." }
+    ],
+    "architecture": [
+      {
+        "phaseTitle": "Phase 1: UX Architecture & Cart Engineering",
+        "details": [
+          "AJAX Cart Variant Swapper (`window.swapCartItemVariant` via `fetch` API)",
+          "Aggressive CSS Specificity Wars (Decoupled 3rd-party Judge.me styling)",
+          "Mobile Sticky ATC Validation Fix (Rewrote WebComponent blind queries)"
+        ]
+      },
+      {
+        "phaseTitle": "Phase 2: Multimedia Optimization",
+        "details": [
+          "CSS Re-hydration Bypass (`style-tags.liquid` injection)",
+          "Persistent Session Scarcity Engine (`window.ikohoFakeCounts` caching)",
+          "Shadow DOM Browser Fallbacks (Bypassing Firefox Autoplay Shield)",
+          "AJAX-Surviving Web Components"
+        ]
+      },
+      {
+        "phaseTitle": "Phase 3 & 4: Security & API Logistics",
+        "details": [
+          "Bulk Order Infrastructure (`page.bulk-order.json` prototype)",
+          "Codebase Security Audit (XSS Mitigations in JS)",
+          "Flawless DOM Guard Implementations (`if (!pincodeBtn) return;`)",
+          "Shiprocket API Rotation & Recovery (Bypassed live lockout crisis)"
+        ]
+      },
+      {
+        "phaseTitle": "Phase 5: Advanced Technical SEO",
+        "details": [
+          "Custom Python Deep-Crawler (Bypassing Shopify firewalls)",
+          "Sitemap Cannibalization Fix (JSON template auditing)",
+          "Alt-Text SEO Restoration (Hardcoded asset patching)"
+        ]
+      }
+    ],
+    "kpis": [
+      { "id": "KPI 01", "title": "Zero-Downtime Operations", "desc": "Migrated fulfillment API credentials without halting warehouse shipments." },
+      { "id": "KPI 02", "title": "Restored Organic Traffic", "desc": "Eliminated sitemap cannibalization & resolved massive Alt-Text penalties." },
+      { "id": "KPI 03", "title": "Premium Brand Consistency", "desc": "Pixel-perfect execution across all devices reflecting luxury standards." }
+    ],
+    "quote": "We don't just build Shopify stores; we engineer technical architecture that allows D2C brands to <span class=\"text-[#FF3333]\">scale without friction</span>."
+  },
+  {
+    "id": "your-india-holidays",
+    "slug": "your-india-holidays",
+    "title": "Modernizing AI-Driven Travel",
+    "client": "Your India Holidays",
+    "clientDesc": "Premium Travel Operators",
+    "platform": "React & Firebase",
+    "platformDesc": "Cloudflare Edge Compute",
+    "role": "Lead Consultant",
+    "roleDesc": "AI Pipeline Engineer",
+    "timeline": "2024 – Present",
+    "liveUrl": "https://yourindiaholidays.com",
+    "bottlenecks": [
+      { "id": "01", "title": "AI Hallucinations", "desc": "Complex AI hallucinations outputting inaccurate travel itineraries." },
+      { "id": "02", "title": "Database Query Friction", "desc": "Slow queries on massive collections causing long load times on the admin portal." },
+      { "id": "03", "title": "CI/CD Bottlenecks", "desc": "Manual deployment pipelines severely impacted operational efficiency." },
+      { "id": "04", "title": "Security Vulnerabilities", "desc": "Unverified backend requests left the infrastructure open to attacks." },
+      { "id": "05", "title": "SEO Sub-optimization", "desc": "Legacy markup prevented the site from ranking effectively in organic searches." }
+    ],
+    "architecture": [
+      {
+        "phaseTitle": "Phase 1: AI Planner Architecture",
+        "details": [
+          "Cloudflare Workers: Migrated the AI pipeline to edge compute for rapid generation.",
+          "Llama 3 Integration: Replaced legacy models to drastically reduce AI hallucinations."
+        ]
+      },
+      {
+        "phaseTitle": "Phase 2: Admin Dashboard Optimization",
+        "details": [
+          "getCountFromServer: Implemented native Firestore aggregation to avoid massive document reads.",
+          "Search Filtering: Engineered a robust multi-parameter search system for admin operations."
+        ]
+      },
+      {
+        "phaseTitle": "Phase 3: Security & CI/CD",
+        "details": [
+          "GitHub Actions: Automated the deployment process to eliminate manual CI/CD bottlenecks.",
+          "App Check: Secured the backend infrastructure using Firebase App Check."
+        ]
+      },
+      {
+        "phaseTitle": "Phase 4: SEO & Data Integrity",
+        "details": [
+          "Data Integrity: Re-structured the NoSQL schema and enforced strict rules.",
+          "SEO Optimization: Overhauled semantic markup and metadata to boost rankings."
+        ]
+      }
+    ],
+    "kpis": [
+      { "id": "KPI 01", "title": "Eliminated AI Hallucinations", "desc": "Achieved highly reliable, contextual tour generation." },
+      { "id": "KPI 02", "title": "Lightning-fast Dashboard", "desc": "Drastically reduced load times for backend admin portals." },
+      { "id": "KPI 03", "title": "Automated Deployments", "desc": "Replaced manual bottlenecks with seamless CI/CD pipelines." }
+    ],
+    "quote": "We engineer the <span class=\"text-[#FF3333]\">infrastructure of tomorrow</span>, unlocking operational freedom for travel operators."
+  }
+]
