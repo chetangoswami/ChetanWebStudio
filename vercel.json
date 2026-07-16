@@ -1,3 +1,4 @@
 {
-  "name": "chetan-web-studio"
+  "name": "chetan-web-studio",
+  "framework": "nextjs"
 }
