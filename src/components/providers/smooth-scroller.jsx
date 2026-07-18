@@ -56,7 +56,7 @@ export function SmoothScroller({ children }) {
       options={{
         lerp: 0.08,             // Interpolation intensity (lower value = smoother, heavier feel)
         duration: 1.2,          // Fallback duration parameter
-        syncTouch: true,        // Replaces deprecated smoothTouch for flawless mobile touch handling
+        syncTouch: false,       // Restores native scroll momentum on mobile touch devices
         smoothWheel: true,      // Enable mouse wheel smoothing
       }}
     >
