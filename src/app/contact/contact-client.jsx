@@ -168,12 +168,12 @@ export default function ContactPage() {
             <h2 className="text-3xl md:text-5xl font-black font-heading uppercase mb-12 text-[#F2F2F2]">Who are we speaking with?</h2>
             
             <div className="grid grid-cols-1 md:grid-cols-2 gap-px bg-[#2A2A2A] border border-[#2A2A2A]">
-              <div className={`p-8 bg-[#050505] flex flex-col ${errors.name ? 'error-shake' : ''}`}>
+              <div className={`p-4 md:p-8 bg-[#050505] flex flex-col ${errors.name ? 'error-shake' : ''}`}>
                 <label htmlFor="name" className="text-[#A0A0A0] text-sm uppercase font-mono font-bold tracking-widest mb-4">
                   FULL NAME_
                   {errors.name && <span className="text-[#FF3333] ml-2">ERR: REQUIRED</span>}
                 </label>
-                <div className="flex items-center text-xl md:text-2xl font-mono text-[#555]">
+                <div className="flex items-center text-base md:text-2xl font-mono text-[#555]">
                   [ <input 
                       type="text" 
                       name="name" 
@@ -186,12 +186,12 @@ export default function ContactPage() {
                 </div>
               </div>
 
-              <div className={`p-8 bg-[#050505] flex flex-col ${errors.email ? 'error-shake' : ''}`}>
+              <div className={`p-4 md:p-8 bg-[#050505] flex flex-col ${errors.email ? 'error-shake' : ''}`}>
                 <label htmlFor="email" className="text-[#A0A0A0] text-sm uppercase font-mono font-bold tracking-widest mb-4">
                   EMAIL ADDRESS_
                   {errors.email && <span className="text-[#FF3333] ml-2">ERR: INVALID</span>}
                 </label>
-                <div className="flex items-center text-xl md:text-2xl font-mono text-[#555]">
+                <div className="flex items-center text-base md:text-2xl font-mono text-[#555]">
                   [ <input 
                       type="email" 
                       name="email" 
@@ -204,12 +204,12 @@ export default function ContactPage() {
                 </div>
               </div>
 
-              <div className={`p-8 bg-[#050505] flex flex-col md:col-span-2 ${errors.company ? 'error-shake' : ''}`}>
+              <div className={`p-4 md:p-8 bg-[#050505] flex flex-col md:col-span-2 ${errors.company ? 'error-shake' : ''}`}>
                 <label htmlFor="company" className="text-[#A0A0A0] text-sm uppercase font-mono font-bold tracking-widest mb-4">
                   COMPANY NAME_
                   {errors.company && <span className="text-[#FF3333] ml-2">ERR: REQUIRED</span>}
                 </label>
-                <div className="flex items-center text-xl md:text-2xl font-mono text-[#555]">
+                <div className="flex items-center text-base md:text-2xl font-mono text-[#555]">
                   [ <input 
                       type="text" 
                       name="company" 
@@ -232,7 +232,7 @@ export default function ContactPage() {
               {['Immersive Brand Experience', 'E-Commerce Masterpiece', 'Enterprise Web Application', 'Bespoke Custom Architecture'].map((option, idx) => (
                 <label 
                   key={option} 
-                  className={`p-8 flex flex-col justify-between min-h-[200px] cursor-pointer transition-colors duration-[0ms] ${formData.service === option ? 'bg-[#F2F2F2] text-[#050505]' : 'bg-[#050505] text-[#F2F2F2] hover:bg-[#111]'}`}
+                  className={`p-4 md:p-8 flex flex-col justify-between min-h-[200px] cursor-pointer transition-colors duration-[0ms] ${formData.service === option ? 'bg-[#F2F2F2] text-[#050505]' : 'bg-[#050505] text-[#F2F2F2] hover:bg-[#111]'}`}
                 >
                   <input 
                     type="radio" 
@@ -262,7 +262,7 @@ export default function ContactPage() {
               ].map((tier, idx) => (
                 <label 
                   key={tier.name} 
-                  className={`p-8 flex flex-col justify-between min-h-[200px] cursor-pointer transition-colors duration-[0ms] ${formData.scale === tier.name ? 'bg-[#F2F2F2] text-[#050505]' : 'bg-[#050505] text-[#F2F2F2] hover:bg-[#111]'}`}
+                  className={`p-4 md:p-8 flex flex-col justify-between min-h-[200px] cursor-pointer transition-colors duration-[0ms] ${formData.scale === tier.name ? 'bg-[#F2F2F2] text-[#050505]' : 'bg-[#050505] text-[#F2F2F2] hover:bg-[#111]'}`}
                 >
                   <input 
                     type="radio" 
@@ -287,12 +287,12 @@ export default function ContactPage() {
             <h2 className="text-3xl md:text-5xl font-black font-heading uppercase mb-12 text-[#F2F2F2]">The Blueprint.</h2>
             
             <div className="grid grid-cols-1 gap-px bg-[#2A2A2A] border border-[#2A2A2A]">
-              <div className={`p-8 bg-[#050505] flex flex-col ${errors.timeline ? 'error-shake' : ''}`}>
+              <div className={`p-4 md:p-8 bg-[#050505] flex flex-col ${errors.timeline ? 'error-shake' : ''}`}>
                 <label htmlFor="timeline" className="text-[#A0A0A0] text-sm uppercase font-mono font-bold tracking-widest mb-4">
                   TARGET TIMELINE_
                   {errors.timeline && <span className="text-[#FF3333] ml-2">ERR: REQUIRED</span>}
                 </label>
-                <div className="flex items-center text-xl md:text-2xl font-mono text-[#555]">
+                <div className="flex items-center text-base md:text-2xl font-mono text-[#555]">
                   [ <select 
                       name="timeline" 
                       value={formData.timeline}
@@ -307,12 +307,12 @@ export default function ContactPage() {
                 </div>
               </div>
 
-              <div className={`p-8 bg-[#050505] flex flex-col ${errors.details ? 'error-shake' : ''}`}>
+              <div className={`p-4 md:p-8 bg-[#050505] flex flex-col ${errors.details ? 'error-shake' : ''}`}>
                 <label htmlFor="details" className="text-[#A0A0A0] text-sm uppercase font-mono font-bold tracking-widest mb-4">
                   CORE CHALLENGE_
                   {errors.details && <span className="text-[#FF3333] ml-2">ERR: REQUIRED</span>}
                 </label>
-                <div className="flex text-xl md:text-2xl font-mono text-[#555]">
+                <div className="flex text-base md:text-2xl font-mono text-[#555]">
                   [ <textarea 
                       name="details" 
                       id="details"
@@ -325,7 +325,7 @@ export default function ContactPage() {
                 </div>
               </div>
               
-              <div className={`p-8 bg-[#050505] ${errors.captcha ? 'error-shake border-t border-[#FF3333]' : ''}`}>
+              <div className={`p-4 md:p-8 bg-[#050505] overflow-x-auto overflow-y-hidden ${errors.captcha ? 'error-shake border-t border-[#FF3333]' : ''}`}>
                 <label className="text-[#A0A0A0] text-sm uppercase font-mono font-bold tracking-widest mb-4 block">
                   HUMAN VERIFICATION_
                   {errors.captcha && <span className="text-[#FF3333] ml-2">ERR: CAPTCHA_REQUIRED</span>}
